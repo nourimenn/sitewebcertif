@@ -14,8 +14,9 @@
         min-height: 70vh;
         display: flex;
         align-items: center;
-        color: white;
+        color: rgb(187, 39, 128);
         overflow: hidden;
+
     }
 
     .hero-bg {
@@ -23,15 +24,15 @@
         inset: 0;
         background-size: cover;
         background-position: center;
-        filter: brightness(0.45);
+        filter: brightness(1);
         z-index: -2;
     }
 
     .hero-overlay {
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at top left, rgba(59,130,246,0.6), transparent),
-                    radial-gradient(circle at bottom right, rgba(79,70,229,0.6), transparent);
+        background: radial-gradient(circle at top left, rgba(240, 188, 204, 0.022), transparent),
+                    radial-gradient(circle at bottom right, rgba(249, 197, 214, 0.034), transparent);
         mix-blend-mode: soft-light;
         z-index: -1;
     }
@@ -46,7 +47,7 @@
         font-size: 0.85rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #bfdbfe;
+        color: #cf1280;
         margin-bottom: 0.75rem;
     }
 
@@ -58,8 +59,8 @@
 
     .hero-subtitle {
         max-width: 540px;
-        font-size: 0.98rem;
-        color: #e5e7eb;
+        font-size: 1rem;
+        color: #c5127d;
         margin-bottom: 1.75rem;
     }
 
@@ -73,20 +74,20 @@
     .btn-secondary {
         padding: 0.7rem 1.3rem;
         border-radius: 999px;
-        border: 1px solid rgba(229,231,235,0.6);
+        border: 1px solid rgb(240, 128, 193);
         font-size: 0.9rem;
-        background: rgba(17,24,39,0.55);
+        background: rgb(228, 122, 169);
         backdrop-filter: blur(6px);
         color: #e5e7eb;
     }
 
     .btn-secondary:hover {
-        background: rgba(17,24,39,0.85);
+        background: rgba(248, 82, 143, 0.85);
     }
 
     /* Section services sur la page d'accueil */
     .home-services {
-        background: white;
+        background: rgb(250, 220, 232);
         padding: 3rem 0;
     }
 
@@ -106,13 +107,13 @@
         text-decoration: none;
         cursor: pointer;
         min-height: 220px;
-        background: #111827;
+        background: rgb(250, 220, 232);
         transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
     }
 
     .service-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.25);
+        box-shadow: 0 14px 30px rgba(181, 184, 190, 0);
     }
 
     .service-image-wrapper {
@@ -145,23 +146,23 @@
         padding: 1.1rem 1rem;
         background: linear-gradient(
             to top,
-            rgba(15, 23, 42, 0.9),
-            rgba(15, 23, 42, 0.3),
+            rgba(255, 255, 255, 0),
+            rgba(231, 171, 171, 0),
             transparent
         );
-        color: white;
+        color: rgb(255, 255, 255);
     }
 
     .service-badge {
-        font-size: 0.75rem;
+        font-size: 0.90rem;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        color: #bfdbfe;
+        color: #fafafa;
         margin-bottom: 0.25rem;
     }
 
     .service-title {
-        font-size: 1.1rem;
+        font-size: 2 rem;
         font-weight: 600;
         margin-bottom: 0.1rem;
     }
@@ -176,7 +177,7 @@
         width: 100%;
         height: 100%;
         min-height: 220px;
-        background: radial-gradient(circle at top left, #2563eb, #4f46e5);
+        background: radial-gradient(circle at top left, #e85ed3, #d046e5);
     }
 
     .home-contact-cta {
@@ -186,7 +187,7 @@
 
     .home-contact-cta p {
         margin-bottom: 0.75rem;
-        color: #4b5563;
+        color: #fa2b7b;
         font-size: 0.95rem;
     }
 
@@ -260,7 +261,7 @@
             {% if page.hero_secondary_button_text %}
                 <a href="{% if page.hero_secondary_button_page %}{{ page.hero_secondary_button_page.url }}{% else %}#{% endif %}"
                    class="btn-secondary">
-                    {{ page.hero_secondary_button_text|default:"Discutons de votre projet" }}
+                    {{ page.hero_secondary_button_text|default:"Voir les produits ensoleillés ☀️" }}
                 </a>
             {% endif %}
         </div>
@@ -310,14 +311,14 @@
                 {% endfor %}
             </div>
         {% else %}
-            <p style="margin-top:1.5rem; color:#6b7280; font-size:0.9rem;">
+            <p style="margin-top:1.5rem; color:#fcfdff; font-size:0.9rem;">
                 Aucun service n’est encore configuré. Vous pouvez ajouter vos services depuis l’admin Wagtail.
             </p>
         {% endif %}
 
         <!-- Petit rappel vers la page contact -->
         <div class="home-contact-cta">
-            <p>Vous avez un projet en tête ?</p>
+            <p>Une question ?</p>
             <a href="/contact/" class="btn-primary">Nous contacter</a>
         </div>
     </div>

@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% load wagtailimages_tags wagtailcore_tags %}
 
@@ -5,6 +6,7 @@
 
 {% block content %}
 <style>
+
     /* =======================
        Styles page "À propos"
        ======================= */
@@ -18,13 +20,20 @@
         display: grid;
         gap: 2rem;
         grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-        align-items: center;
+        align-items: start;   /* texte aligné en haut */
+    }
+
+    .about-text h1,
+    .about-text h2,
+    .about-text p {
+        margin-top: 0;
     }
 
     .about-text p {
-        font-size: 0.95rem;
-        color: #4b5563;
-        margin-bottom: 0.75rem;
+        font-size: 1.1rem;     /* ← texte plus grand */
+        color: #fa2b7b;
+        margin-bottom: 1.25rem; /* ← plus d’espace entre paragraphes */
+        line-height: 1.6;       /* ← meilleure lisibilité */
     }
 
     .about-image-card {
@@ -35,15 +44,16 @@
     }
 
     .about-image-card img {
-        width: 100%;
+        width: 100%;          
+        height: auto;
         display: block;
         border-radius: 1rem;
     }
 
     .about-caption {
         margin-top: 0.75rem;
-        font-size: 0.85rem;
-        color: #6b7280;
+        font-size: 0.9rem;     /* légèrement agrandi aussi */
+        color: #fa2b7b;
     }
 
     /* =======================
@@ -60,7 +70,7 @@
         }
 
         .about-image-card {
-            order: -1; /* l'image peut passer au-dessus du texte si tu veux */
+            order: -1; /* l'image passe au-dessus du texte si tu veux */
         }
     }
 </style>
@@ -78,7 +88,6 @@
         <div class="about-grid">
             <!-- Texte de présentation -->
             <div class="about-text">
-                {# Contenu riche modifiable dans l’admin Wagtail #}
                 {% if page.body %}
                     {{ page.body|richtext }}
                 {% else %}
@@ -94,14 +103,16 @@
                 {% endif %}
             </div>
 
-            <!-- Bloc visuel / image décorative -->
+           <!-- Bloc visuel / image décorative -->
             <div class="about-image-card">
                 <div style="border-radius:1rem; overflow:hidden;">
                     {% if page.image %}
-                        {% image page.image fill-800x500 %}
+                        <img src="{{ page.image.file.url }}"
+                            alt="{{ page.image.title }}"
+                            style="width:100%; height:auto; border-radius:1rem;">
                     {% else %}
                         <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg"
-                             alt="Équipe qui travaille ensemble">
+                            alt="Équipe qui travaille ensemble">
                     {% endif %}
                 </div>
                 <p class="about-caption">

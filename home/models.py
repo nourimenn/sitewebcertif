@@ -1,7 +1,7 @@
 # models.py
 from django.db import models
 
-from wagtail.models import Page
+from wagtail.models import Page, Orderable
 from wagtail.fields import RichTextField, StreamField
 from wagtail import blocks
 from wagtail.admin.panels import (
@@ -17,6 +17,7 @@ from wagtail.images.blocks import ImageChooserBlock   # ✅ pour l'image dans ch
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from modelcluster.fields import ParentalKey
+
 
 # ============================================================
 # 1) Bloc réutilisable pour décrire un service
@@ -282,6 +283,33 @@ class AboutPage(Page):
         FieldPanel("body"),
         FieldPanel("image"),
         FieldPanel("image_caption"),
+    ]
+
+
+class GalerieImage(Orderable):
+    page = ParentalKey('GaleriePage', on_delete=models.CASCADE, related_name='images')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.CASCADE,
+        related_name='+'
+    )
+    caption = models.CharField(max_length=255, blank=True)
+
+    panels = [
+        FieldPanel('image'),
+        FieldPanel('caption'),
+    ]
+
+    class Meta:
+        ordering = ['sort_order']  # fourni par Orderable
+
+
+class GaleriePage(Page):
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+        InlinePanel('images', label="Images de la galerie"),
     ]
 
 

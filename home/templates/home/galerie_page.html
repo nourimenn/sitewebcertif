@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-galeriepage{% endblock %}
+
+{% block content %}
+
+<style>
+  /* Style du titre */
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  /* Style de l'intro */
+  .intro {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f1177d;
+  }
+
+  /* Galerie full-width mais centrée dans la page */
+  .gallery-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .gallery-wrapper > div {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .gallery-wrapper img,
+  .gallery-wrapper picture {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .gallery-wrapper p {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+
+<section class="gallery-section">
+    <div class="container">   <!-- ✅ AJOUT ESSENTIEL -->
+
+        <h1>{{ page.title }}</h1>
+
+        {% if page.intro %}
+            <div class="intro">{{ page.intro|richtext }}</div>
+        {% endif %}
+
+        <div class="gallery-wrapper">
+            {% for item in page.images.all %}
+                <div>
+                    {% image item.image fill-320x240 %}
+                    {% if item.caption %}
+                        <p>{{ item.caption }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

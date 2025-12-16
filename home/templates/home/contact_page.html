@@ -22,20 +22,20 @@
 
     .contact-intro-text {
         font-size: 0.95rem;
-        color: #4b5563;
+        color: #fa2b7b;
         margin-bottom: 0.75rem;
     }
 
     .contact-infos {
         font-size: 0.95rem;
-        color: #4b5563;
+        color: #fa2b7b;
     }
 
     .contact-card {
-        background: white;
+        background: rgb(255, 252, 253);
         border-radius: 1rem;
         padding: 1.5rem;
-        border: 1px solid #e5e7eb;
+        border: 1px solid rgb(255, 252, 253);
     }
 
     .contact-form-group {
@@ -78,7 +78,7 @@
         font-size: 0.9rem;
         margin-bottom: 0.35rem;
         font-weight: 500;
-        color: #374151;
+        color: #fa76c7;
     }
 
     /* Style inputs et textarea */
@@ -101,8 +101,8 @@
     form textarea:focus,
     form select:focus {
         outline: none;
-        border-color: #2563eb;
-        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+        border-color: #f0238d;
+        box-shadow: 0 0 0 2px rgba(10, 203, 220, 0.702);
     }
 
     /* Unifier le bouton si Django génère un <input type="submit"> */
@@ -139,7 +139,7 @@
         <div class="contact-grid">
             <!-- Infos de contact -->
             <div>
-                <h2 style="font-size:1.15rem; margin-bottom:0.75rem;">Nous écrire</h2>
+                <h2 style="font-size:1.15rem; margin-bottom:0.75rem;">M'écrire</h2>
 
                 {% if page.contact_text %}
                     {{ page.contact_text|richtext }}
