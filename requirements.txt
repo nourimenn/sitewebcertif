@@ -3,3 +3,8 @@ wagtail>=7.2,<7.3
 python-dotenv
 
 Pillow
+
+gunicorn
+whitenoise
+
+psycopg[binary]
